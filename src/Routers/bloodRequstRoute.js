@@ -1,20 +1,22 @@
 const express = require('express');
-const bloodRequestRouter = express.Router();
-const bloodRequestController = require('../Controllers/BloodRequestController');
+const requestRouter = express.Router();
 
+
+const {
+    createBloodRequest,getAllBloodRequests
+} = require('../Controllers/BloodRequestController');
 // Create a new blood request
-bloodRequestRouter.post('/', bloodRequestController.createBloodRequest);
 
+requestRouter.get("/", getAllBloodRequests);
+requestRouter.post("/", createBloodRequest);
 // Get all blood requests
-bloodRequestRouter.get('/', bloodRequestController.getAllBloodRequests);
+// // Get a single blood request by ID
+// bloodRequestRouter.get('/:id', bloodRequestController.getBloodRequestById);
 
-// Get a single blood request by ID
-bloodRequestRouter.get('/:id', bloodRequestController.getBloodRequestById);
+// // Update a blood request by ID
+// bloodRequestRouter.patch('/:id', bloodRequestController.updateBloodRequest);
 
-// Update a blood request by ID
-bloodRequestRouter.patch('/:id', bloodRequestController.updateBloodRequest);
+// // Delete a blood request by ID
+// bloodRequestRouter.delete('/:id', bloodRequestController.deleteBloodRequest);
 
-// Delete a blood request by ID
-bloodRequestRouter.delete('/:id', bloodRequestController.deleteBloodRequest);
-
-module.exports = bloodRequestRouter;
+module.exports = requestRouter;

@@ -3,7 +3,7 @@ const mongoSanitize = require("express-mongo-sanitize");
 const path = require("path");
 const cors = require("cors");
 const userRouter = require("./src/Routers/userRoute");
-const donaterouter = require("./src/Routers/donateRoute");
+const donateRouter = require("./src/Routers/donateRoute");
 const bloodUnitrouter = require("./src/Routers/bloodRequstRoute");
 const bloodRequestRouter = require("./src/Routers/bloodRequstRoute");
 // const checkUserActive = require("./src/Controllers/UserController");
@@ -23,7 +23,7 @@ app.use(express.static(path.join(__dirname + "../../public")));
 
 app.use("/uploads", express.static("public/"));
 app.use("/api/user",userRouter);
-app.use("/api/donate",donaterouter);
+app.use("/api/donate",donateRouter);
 app.use("/api/bloodUnit",bloodUnitrouter);
 app.use("/api/bloodRequest",bloodRequestRouter);
 

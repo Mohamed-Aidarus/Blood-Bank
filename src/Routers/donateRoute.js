@@ -1,21 +1,22 @@
-// routes.js
 const express = require('express');
-const donaterouter = express.Router();
-const donateController = require('../Controllers/DonateController');
+const donateRouter = express.Router();
 
-// Create a new donation
-donaterouter.post('/', donateController.createDonation);
 
-// Get all donations
-donaterouter.get('/', donateController.getAllDonations);
+const {
+    createDonation,getAllDonations
+} = require('../Controllers/DonateController');
+// Create a new blood request
 
-// Get a single donation by ID
-donaterouter.get('/:id', donateController.getDonation);
+donateRouter.get("/", getAllDonations);
+donateRouter.post("/", createDonation);
 
-// Update a donation by ID
-donaterouter.patch('/:id', donateController.updateDonation);
+// // Get a single donation by ID
+// donaterouter.get('/:id', donateController.getDonation);
 
-// Delete a donation by ID
-donaterouter.delete('/:id', donateController.deleteDonation);
+// // Update a donation by ID
+// donaterouter.patch('/:id', donateController.updateDonation);
 
-module.exports = donaterouter;
+// // Delete a donation by ID
+// donaterouter.delete('/:id', donateController.deleteDonation);
+
+module.exports = donateRouter;

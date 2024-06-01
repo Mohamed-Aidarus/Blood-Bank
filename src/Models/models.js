@@ -5,7 +5,7 @@ const bcrypt = require("bcryptjs");
 
 // Define User schema
 const userSchema = new Schema({
-  fullname:  { type: String, required: [true, "fullname is required"] },
+  fullname:  { type: String,  },
   email: { type: String, unique: true },
   age: Number,
   gender: { type: String, required: [true, "gender is required"] },
@@ -103,25 +103,13 @@ userSchema.pre(/^find/, function (next) {
 // BloodRequest Schema with Emergence Status
 // BloodRequest Schema with Emergence Status and Requester Information
 const bloodRequestSchema = new mongoose.Schema({
-  name: String,
+  fullname: String,
   age: Number,
   gender: String,
   bloodGroup: String,
   medicalCondition: String,
   unit: Number,
-  status: {
-    type: String,
-    enum: ["Approved", "Pending"],
-  },
-  action: {
-    type: String,
-    enum: ["Approve", "Reject"],
-  },
-  requester: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-    required: true,
-  },
+  requestTimestamp: { type: Date, default: Date.now },
 });
 
 const bloodUnitSchema = new Schema({
@@ -137,21 +125,12 @@ const bloodUnitSchema = new Schema({
 // donateModel.js
 
 const donateSchema = new Schema({
+  fullname: String,
   bloodGroup: String,
+  age: Number,
   unit: Number,
   disease: String,
-  age: Number,
   requestTimestamp: { type: Date, default: Date.now },
-  donor: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
-    required: true,
-  },
-  bloodUnit: {
-    type: Schema.Types.ObjectId,
-    ref: "BloodUnit",
-    required: true,
-  },
 });
 
 // Collections

@@ -282,12 +282,12 @@ exports.updateAllUsers = async (req, res) => {
 };
 
 exports.deleteUser = async (req, res) => {
-    const userId = req.params.id;
+    const { email } = req.body; // Destructure the email property from req.body
 
     try {
-        const existingUser = await User.findById(userId);
+        const existingUser = await User.findOne({ email }); // Now email contains the email address
         if (!existingUser) {
-            return res.status(404).json({ message: "User not found" });
+            return res.status(404).json({ message: "Email not found" });
         }
 
         await existingUser.deleteOne();
@@ -302,6 +302,7 @@ exports.deleteUser = async (req, res) => {
         return res.status(500).json({ message: "Server error" });
     }
 };
+
 
 exports.deleteAllUsers = async (req, res) => {
     try {

@@ -29,3 +29,5 @@
 2024-06-22T21:18:26.541Z [32minfo[39m: Reset password email sent: 250 2.0.0 Ok: queued
 2024-06-22T21:22:06.494Z [32minfo[39m: Reset URL: http://localhost:3000/ResetPassword?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Njc2OGFlODU0MDUyOTAyNWE5NTkwNDciLCJlbWFpbCI6IkFpZGFydXNAZ21haWwuY29tIiwiaWF0IjoxNzE5MDkxMzI2LCJleHAiOjE3MTkwOTQ5MjZ9.6B-4C0Lg3skOjnjFi0_9u-Abyk_LZkA09qQnanxS_kI
 2024-06-22T21:22:12.279Z [32minfo[39m: Reset password email sent: 250 2.0.0 Ok: queued
+2024-06-22T21:35:22.787Z [32minfo[39m: Reset URL: http://localhost:3000/ResetPassword?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Njc2OGFlODU0MDUyOTAyNWE5NTkwNDciLCJlbWFpbCI6IkFpZGFydXNAZ21haWwuY29tIiwiaWF0IjoxNzE5MDkyMTIyLCJleHAiOjE3MTkwOTU3MjJ9.iwU9lJCWAfUOS3SvtIH8AEWFKYBgiJMSaHm711H7XJ0
+2024-06-22T21:35:26.504Z [32minfo[39m: Reset password email sent: 250 2.0.0 Ok: queued

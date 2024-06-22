@@ -15,3 +15,17 @@
 2024-06-02T06:03:07.397Z [32minfo[39m: Password reset confirmation email sent: 250 2.0.0 Ok: queued
 2024-06-02T07:50:10.729Z [32minfo[39m: Password reset confirmation email sent: 250 2.0.0 Ok: queued
 2024-06-02T09:22:54.819Z [31merror[39m: Error sending reset password email: connect EHOSTUNREACH 3.209.246.195:25
+2024-06-22T20:10:05.416Z [31merror[39m: Error deleting user: User.indByIdAndDelete is not a function
+2024-06-22T20:44:45.184Z [32minfo[39m: Reset password email sent: 250 2.0.0 Ok: queued
+2024-06-22T20:45:17.554Z [32minfo[39m: Reset password email sent: 250 2.0.0 Ok: queued
+2024-06-22T20:48:16.661Z [32minfo[39m: Reset password email sent: 250 2.0.0 Ok: queued
+2024-06-22T21:01:34.655Z [31merror[39m: Error in forgotPassword: Cast to string failed for value "{ email: 'Aidarus@gmail.com' }" (type Object) at path "email" for model "User"
+2024-06-22T21:01:45.497Z [31merror[39m: Error in forgotPassword: Cast to string failed for value "{ email: 'Aidarus@gmail.com' }" (type Object) at path "email" for model "User"
+2024-06-22T21:02:25.655Z [32minfo[39m: Reset URL: http://localhost:3000/ResetPassword/resetPassword?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Njc2OGFlODU0MDUyOTAyNWE5NTkwNDciLCJlbWFpbCI6IkFpZGFydXNAZ21haWwuY29tIiwiaWF0IjoxNzE5MDkwMTQ1LCJleHAiOjE3MTkwOTM3NDV9.9rohhvb5D0ViRvLIjs5VAl5EycVbLZpFuKCXoFG4rys
+2024-06-22T21:02:29.513Z [32minfo[39m: Reset password email sent: 250 2.0.0 Ok: queued
+2024-06-22T21:13:21.821Z [32minfo[39m: Reset URL: http://localhost:3000/ResetPassword/resetPassword?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Njc2OGFlODU0MDUyOTAyNWE5NTkwNDciLCJlbWFpbCI6IkFpZGFydXNAZ21haWwuY29tIiwiaWF0IjoxNzE5MDkwODAxLCJleHAiOjE3MTkwOTQ0MDF9.KL_dMc5lt-XGDArmxMQpVgMJ1-Iei5uykPRLZAqjSp4
+2024-06-22T21:13:25.607Z [32minfo[39m: Reset password email sent: 250 2.0.0 Ok: queued
+2024-06-22T21:18:21.990Z [32minfo[39m: Reset URL: http://localhost:3000/ResetPasswordeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Njc2OGFlODU0MDUyOTAyNWE5NTkwNDciLCJlbWFpbCI6IkFpZGFydXNAZ21haWwuY29tIiwiaWF0IjoxNzE5MDkxMTAxLCJleHAiOjE3MTkwOTQ3MDF9.-JiG4nQz-9iOPwoXAbF4Aicf2clGUr05umFnH3p0SHU
+2024-06-22T21:18:26.541Z [32minfo[39m: Reset password email sent: 250 2.0.0 Ok: queued
+2024-06-22T21:22:06.494Z [32minfo[39m: Reset URL: http://localhost:3000/ResetPassword?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2Njc2OGFlODU0MDUyOTAyNWE5NTkwNDciLCJlbWFpbCI6IkFpZGFydXNAZ21haWwuY29tIiwiaWF0IjoxNzE5MDkxMzI2LCJleHAiOjE3MTkwOTQ5MjZ9.6B-4C0Lg3skOjnjFi0_9u-Abyk_LZkA09qQnanxS_kI
+2024-06-22T21:22:12.279Z [32minfo[39m: Reset password email sent: 250 2.0.0 Ok: queued

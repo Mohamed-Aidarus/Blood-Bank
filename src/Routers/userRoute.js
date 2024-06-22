@@ -13,10 +13,10 @@ userRouter.post("/CreateUsers",upload.array("photo"), createUsers);
 
 
 
-userRouter.delete("/", deleteUser);
+userRouter.delete("/:id", deleteUser);
 userRouter.post("/forgotPassword",forgotPassword);
 
-userRouter.post("/resetPassword",resetPassword);
+userRouter.post("/ResetPassword/:token",resetPassword);
 
 userRouter.patch("/",upload.single("photo"),updateUser);
 userRouter.get("/", getAllUsers);

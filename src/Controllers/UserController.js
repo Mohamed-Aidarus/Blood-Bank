@@ -277,12 +277,11 @@ exports.updateAllUsers = async (req, res) => {
 };
 
 exports.deleteUser = async (req, res) => {
-    const { email } = req.body; // Destructure the email property from req.body
 
     try {
-        const existingUser = await User.findOne({ email }); // Now email contains the email address
+        const existingUser = await User.findByIdAndDelete(req.params.id); 
         if (!existingUser) {
-            return res.status(404).json({ message: "Email not found" });
+            return res.status(404).json({ message: "User not found" });
         }
 
         await existingUser.deleteOne();
@@ -327,22 +326,25 @@ exports.forgotPassword = async (req, res) => {
     }
 
     try {
-        const user = await User.findOne({ email: email });
+        const user = await User.findOne({ email });
 
         if (!user) {
             return res.status(404).json({ message: "User not found" });
         }
 
+        // Generate reset token
         const resetToken = jwt.sign(
-            { userId: user._id },
+            { userId: user._id, email: user.email },
             process.env.JWT_SECRET,
             { expiresIn: '1h' }
         );
 
+        // Save token and expiration to user
         user.resetPasswordToken = resetToken;
         user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
         await user.save();
 
+        // Setup email transport
         const transporter = nodemailer.createTransport({
             host: process.env.SMTP_HOST,
             port: process.env.SMTP_PORT,
@@ -352,8 +354,11 @@ exports.forgotPassword = async (req, res) => {
             },
         });
 
+        // Create reset URL
         const resetUrl = `${process.env.FRONTEND_URL}?token=${resetToken}`;
+        logger.info(`Reset URL: ${resetUrl}`);
 
+        // Email content
         const mailOptions = {
             from: process.env.EMAIL_FROM,
             to: user.email,
@@ -379,13 +384,16 @@ exports.forgotPassword = async (req, res) => {
             `,
         };
 
-        transporter.sendMail(mailOptions, function (err) {
+        // Send email
+        transporter.sendMail(mailOptions, (err, info) => {
             if (err) {
                 logger.error(`Error sending reset password email: ${err.message}`);
                 return res.status(500).json({ message: "Failed to send reset password email" });
             }
+            logger.info(`Reset password email sent: ${info.response}`);
             return res.status(200).json({ message: "We have sent you an email to reset your password" });
         });
+
     } catch (error) {
         logger.error(`Error in forgotPassword: ${error.message}`);
         return res.status(500).json({ message: "Server error" });
@@ -395,19 +403,22 @@ exports.forgotPassword = async (req, res) => {
 
 
 exports.resetPassword = async (req, res) => {
-    const { email, password, passwordConfirm } = req.body;
+    const { password, passwordConfirm } = req.body;
+    const token = req.query.token;
 
     try {
-        const user = await User.findOne({ email });
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        const user = await User.findOne({ _id: decoded.userId, resetPasswordToken: token });
 
         if (!user) {
-            return res.status(404).json({ message: "User not found" });
+            return res.status(404).json({ message: "Invalid or expired token" });
         }
 
         if (password !== passwordConfirm) {
             return res.status(400).json({ message: "Passwords do not match" });
         }
 
+        // Update the user's password
         user.password = password;
         user.passwordConfirm = passwordConfirm;
         await user.save();
@@ -444,6 +455,12 @@ exports.resetPassword = async (req, res) => {
         });
 
     } catch (error) {
+        if (error.name === 'JsonWebTokenError') {
+            return res.status(400).json({ message: "Invalid token" });
+        }
+        if (error.name === 'TokenExpiredError') {
+            return res.status(400).json({ message: "Token has expired" });
+        }
         logger.error(`Error resetting password: ${error.message}`);
         return res.status(500).json({ message: "Server error" });
     }

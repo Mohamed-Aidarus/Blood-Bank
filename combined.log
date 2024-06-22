@@ -12,3 +12,6 @@
 2024-06-01T17:30:55.456Z [31merror[39m: Error deleting user: Cast to string failed for value "{ email: 'maxamedmorgan3@gmail.com' }" (type Object) at path "email" for model "User"
 2024-06-01T17:32:07.253Z [31merror[39m: Error deleting user: Cast to string failed for value "{ email: 'maxamedmorgan3@gmail.com' }" (type Object) at path "email" for model "User"
 2024-06-01T17:41:41.255Z [31merror[39m: Error updating user: User validation failed: role: `Admin` is not a valid enum value for path `role`.
+2024-06-02T06:03:07.397Z [32minfo[39m: Password reset confirmation email sent: 250 2.0.0 Ok: queued
+2024-06-02T07:50:10.729Z [32minfo[39m: Password reset confirmation email sent: 250 2.0.0 Ok: queued
+2024-06-02T09:22:54.819Z [31merror[39m: Error sending reset password email: connect EHOSTUNREACH 3.209.246.195:25

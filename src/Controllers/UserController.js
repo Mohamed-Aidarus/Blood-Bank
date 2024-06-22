@@ -22,11 +22,6 @@ exports.createUser = async (req, res) => {
         const user = await User.create({
             fullname,
             email,
-            age,
-            gender,
-            address,
-            bloodGroup,
-            medicalCondition,
             password,
             passwordConfirm,
             photo,

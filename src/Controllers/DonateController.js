@@ -81,21 +81,20 @@ exports.getAllDonations = async (req, res) => {
 // };
 
 // // Delete a donation
-// exports.deleteDonation = async (req, res) => {
-//   try {
-//     const donation = await Donate.findById(req.params.id);
-//     if (!donation) {
-//       return res.status(404).json({ message: 'Donation not found' });
-//     }
+// Controller function to delete a donation
+// Controller function to delete a donation
+// Controller function to delete a donation
+exports.deleteDonation = async (req, res) => {
+  try {
+    const donation = await Donate.findByIdAndDelete(req.params.id);
+    if (!donation) {
+      return res.status(404).json({ message: 'Donation not found' });
+    }
 
-//     // Delete the associated BloodUnit
-//     await BloodUnit.findByIdAndDelete(donation.bloodUnit);
+    res.status(204).json({ message: 'Donation History is deleted successfully!' });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
 
-//     // Delete the Donate document
-//     await donation.delete();
 
-//     res.status(204).json({ message: 'Donation deleted' });
-//   } catch (error) {
-//     res.status(500).json({ message: error.message });
-//   }
-// };

@@ -7,14 +7,6 @@ const bcrypt = require("bcryptjs");
 const userSchema = new Schema({
   fullname:  { type: String,  },
   email: { type: String, unique: true },
-  age: Number,
-  gender: { type: String, required: [true, "gender is required"] },
-  address: String,
-  bloodGroup: { type: String, required: [true, "bloodGroup is required"] },
-  medicalCondition: {
-    type: String,
-    default: "None",
-  },
   password: {
     type: String,
     required: [true, "Password is required"],
@@ -45,8 +37,8 @@ const userSchema = new Schema({
   },
   role: {
     type: String,
-    enum: ["admin", "recipient", "donor"],
-    default: "donor",
+    enum: ["admin", "user", ],
+    default: "user",
   },
 });
 // Middleware to handle password confirmation only during password change

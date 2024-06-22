@@ -7,7 +7,7 @@ const donateRouter = require("./src/Routers/donateRoute");
 const bloodUnitrouter = require("./src/Routers/bloodRequstRoute");
 const bloodRequestRouter = require("./src/Routers/bloodRequstRoute");
 // const checkUserActive = require("./src/Controllers/UserController");
-
+const bloodCountRouter = require('./src/Routers/bloodCountRoute');
 
 
 const app = express();
@@ -26,5 +26,6 @@ app.use("/api/user",userRouter);
 app.use("/api/donate",donateRouter);
 app.use("/api/bloodUnit",bloodUnitrouter);
 app.use("/api/bloodRequest",bloodRequestRouter);
+app.use('/api/bloodcount', bloodCountRouter);
 
 module.exports = app

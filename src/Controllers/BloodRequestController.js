@@ -37,6 +37,18 @@ exports.getAllBloodRequests = async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 };
+exports.deleteBloodRequest = async (req, res) => {
+  try {
+    const bloodRequest = await BloodRequest.findByIdAndDelete(req.params.id);
+    if (!bloodRequest) {
+      return res.status(404).json({ message: 'Blood Request not found' });
+    }
+
+    res.status(204).json({ message: 'Blood Request is deleted successfully!' });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
 
   // // Get a single blood request by ID
   // const getBloodRequestById = async (req, res) => {

@@ -118,16 +118,24 @@ exports.getUser = async (req, res) => {
             return res.status(400).json({ message: "Invalid password" });
         }
 
-        const { role } = existingUser;
+        const { role, fullname, _id } = existingUser;
         const token = jwt.sign(
-            { userId: existingUser._id, fullname: existingUser.fullname, email: existingUser.email, role },
+            { userId: _id, fullname, email, role },
             process.env.JWT_SECRET,
             { expiresIn: '1D' }
         );
 
+        const user_data = {
+            _id,
+            fullname,
+            email,
+            role
+        };
+
         return res.status(200).json({
             message: "User login successful",
-            data: { ...existingUser._doc, token }
+            token,
+            user_data
         });
 
     } catch (error) {
